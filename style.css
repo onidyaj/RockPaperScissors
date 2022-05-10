@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  max-width: 100px;
+  justify-content: center;
+  background: royalblue;
+  padding: 4px;
+  color: white;
+  border-radius: 3px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-top: 30px;
+}

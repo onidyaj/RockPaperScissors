@@ -1,54 +1,47 @@
-function computerPlay() {
-  let num = Math.random();
-  let str1;
-  if (num >= 0.66) {
-    str1 = "Rock";
-  } else if (num <= 0.33) {
-    str1 = "Paper";
-  } else {
-    str1 = "Scissors";
-  }
-  return str1;
+const choices = ["Rock", "Paper", "Scissors"];
+let playerPoint = 0;
+let computerPoint = 0;
+
+function computerChoice() {
+  return choices[Math.floor(Math.random() * choices.length)];
 }
 
-function playRound(playerSelect, computerSelect) {
-  // let str2 = prompt("Choose rock paper or scissors");
-  //if (str2.toLowerCase() === "rock") {
-  // str2 = "Rock";
-  //} else if (str2.toLowerCase() === "paper") {
-  // str2 = "Paper";
-  //} else if (str2.toLowerCase() === "scissors") {
-  // str2 = "Scissors";
-  //}
+function playerChoice() {
+  input = prompt("Choose: Rock, Paper, Scissors");
+  input = input[0].toUpperCase() + input.slice(1).toLowerCase();
+  return input;
+}
 
-  if (playerSelect === computerSelect) {
-    return "Tie";
-  } else if (playerSelect === "Rock") {
-    if (computerSelect === "Paper") {
-      return "Lose";
-    } else if (computerSelect === "Scissors") {
-      return "Win";
-    }
-  } else if (playerSelect === "Paper") {
-    if (computerSelect === "Rock") {
-      return "Win";
-    } else if (computerSelect === "Scissors") {
-      return "Lose";
-    }
-  } else if (playerSelect === "Scissors") {
-    if (computerSelect === "Rock") {
-      return "Lose";
-    } else if (computerSelect === "Paper") {
-      return "Win";
-    }
+function playRound() {
+  const playerSelect = playerChoice();
+  const computerSelect = computerChoice();
+  console.log(`You Chose: ${playerSelect} \n Computer Chose: ${computerSelect}`);
+  const winner = checkWinner(playerSelect, computerSelect);
+  console.log(winner);
+}
+
+function checkWinner(player, computer) {
+  if (player === computer) {
+    return "It's a Tie!\n------------------";
+  } else if ((player === "Rock" && computer === "Scissors") || (player === "Paper" && computer === "Rock") || (player === "Scissors" && computer === "Paper")) {
+    playerPoint++;
+    return "Player Wins Round!\n------------------";
+  } else {
+    computerPoint++;
+    return "Computer Wins Round!\n------------------";
   }
 }
 
 function game() {
-  for (let i = 0; i <= 5; i++) {
-    l;
+  for (i = 1; i <= 5; i++) {
+    playRound(i);
+  }
+  console.log(`Your score: ${playerPoint} \n Computer score: ${computerPoint}`);
+  if (playerPoint < computerPoint) {
+    console.log(`Computer wins!`);
+  } else if (playerPoint > computerPoint) {
+    console.log(`Player wins`);
+  } else {
+    console.log(`You tied!`);
   }
 }
-const playerSelect = "Rock";
-const computerSelect = computerPlay();
-console.log(playRound(playerSelect, computerSelect));
