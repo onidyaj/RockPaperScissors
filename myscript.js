@@ -1,4 +1,9 @@
+/* A Rock Paper Scissors game that currently only displays results in the console
+ */
+
+// Array for the computer choice
 const choices = ["Rock", "Paper", "Scissors"];
+// Score Counters
 let playerPoint = 0;
 let computerPoint = 0;
 
